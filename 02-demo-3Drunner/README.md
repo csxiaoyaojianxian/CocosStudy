@@ -87,7 +87,7 @@ update(deltaTime: number) {
 >
 > 物理材质=物理参数
 
-资源管理器中创建物理材质并拖动到对象的Collider碰撞体组件的物理材质参数上。
+资源管理器中创建物理材质并拖动到对象的Collider碰撞体组件的物理材质参数上，设置摩擦力为 0
 
 ## 6. 脚本组件
 
@@ -100,6 +100,24 @@ update(deltaTime: number) {
 `onDestroy()`
 
 ...
+
+## 7. 碰撞处理
+
+思路：Player 监听到碰撞，并且碰撞体为 Obstacle，则禁用 PlayerMovment 组件，取消力的作用和键盘事件监听。
+
+## 8. 预制体prefab
+
+从层级管理器将节点拖入资源管理器后生成预制体，场景中的预制体也支持编辑、取消关联、定位资源、从资源还原、更新到资源的操作
+
+## 9. 终点与失败判定
+
+在终点创建 cube 条挡在地块 Block 中间作为终点并禁用 MeshRenderer 组件，使其不可见。
+
+由于终点不会动，去除 RigidBody 刚体组件，只保留 BoxCollider 碰撞体，并勾选 BoxCollider 组件中的 **Is Trigger** 选项，成为触发器。
+
+> 不同于碰撞体，触发器只做范围检查，不做力学运算
+
+而从失败的判定，除了碰撞到障碍物停止，还可以在 PlayerMovement 组件中通过判断 `this.node.position.y < -10` 判断 Player 从侧面掉下去了
 
 
 

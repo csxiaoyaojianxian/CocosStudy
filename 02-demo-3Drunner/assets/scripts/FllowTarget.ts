@@ -10,10 +10,7 @@ export class FllowTarget extends Component {
     @property(Vec3)
     offset: Vec3 = new Vec3();
 
-
-    start() {
-
-    }
+    start() {}
 
     tempPos = new Vec3();
     update(deltaTime: number) {
