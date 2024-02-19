@@ -2,11 +2,11 @@
  * @Author: csxiaoyaojianxian 1724338257@qq.com
  * @Date: 2024-02-18 23:24:52
  * @LastEditors: csxiaoyaojianxian 1724338257@qq.com
- * @LastEditTime: 2024-02-19 00:17:03
+ * @LastEditTime: 2024-02-19 13:37:10
  * @FilePath: /02-demo-3Drunner/assets/scripts/PlayerCollision.ts
  * @Description: 碰撞监听
  */
-import { _decorator, BoxCollider, Component, ICollisionEvent, ITriggerEvent, Node } from 'cc';
+import { _decorator, BoxCollider, Component, director, ICollisionEvent, ITriggerEvent, Node } from 'cc';
 import { PlayerMovement } from './PlayerMovement';
 const { ccclass, property } = _decorator;
 
@@ -34,7 +34,14 @@ export class PlayerCollision extends Component {
         if (event.otherCollider.node.name === 'Obstacle') {
             const movement = this.node.getComponent(PlayerMovement);
             movement.enabled = false;
+
+            // 抛出失败事件
+            director.getScene().emit('level_failed');
+            // 重新加载当前场景
+            // director.loadScene(director.getScene().name);
         }
+
+
     }
 
     onTriggerEnter(event: ITriggerEvent) {
@@ -42,6 +49,8 @@ export class PlayerCollision extends Component {
         if (event.otherCollider.node.name === 'Obstacle') {
             const movement = this.node.getComponent(PlayerMovement);
             movement.enabled = false;
+
+            director.getScene().emit('level_successful');
         }
     }
 }

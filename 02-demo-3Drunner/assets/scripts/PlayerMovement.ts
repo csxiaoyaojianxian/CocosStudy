@@ -2,11 +2,11 @@
  * @Author: csxiaoyaojianxian 1724338257@qq.com
  * @Date: 2024-02-17 23:41:54
  * @LastEditors: csxiaoyaojianxian 1724338257@qq.com
- * @LastEditTime: 2024-02-19 00:17:56
+ * @LastEditTime: 2024-02-19 13:31:32
  * @FilePath: /02-demo-3Drunner/assets/scripts/PlayerMovement.ts
  * @Description: 持续施加前进力，并监听键盘操作施加左右力
  */
-import { _decorator, Component, EventKeyboard, Input, input, KeyCode, Node, RigidBody, Vec3 } from 'cc';
+import { _decorator, Component, director, EventKeyboard, Input, input, KeyCode, Node, RigidBody, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('PlayerMovement')
@@ -49,6 +49,8 @@ export class PlayerMovement extends Component {
         if (this.node.position.y < -10) {
             console.log('you lose');
             this.enabled = false;
+
+            director.getScene().emit('level_failed');
         }
     }
 

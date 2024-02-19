@@ -119,5 +119,32 @@ update(deltaTime: number) {
 
 而从失败的判定，除了碰撞到障碍物停止，还可以在 PlayerMovement 组件中通过判断 `this.node.position.y < -10` 判断 Player 从侧面掉下去了
 
+## 10. 2D UI绘制
 
+编辑器切换为 2D 模式，在场景下创建2D对象，如 Label 会自动创建 `Canvas` 节点，Canvas 下的 Camera 用于渲染 2D 界面，而场景下的  Main Camera 用于渲染 3D 界面。
+
+添加 `Widget` 组件，设置固定停靠位置，类似 `position: fixed;`
+
+## 11. 多关卡与关卡切换
+
+首先调整层级结构树，将基础对象拖到LevelBase下后生成预制体，复制当前场景，如 level-001，level-002...
+
+创建关卡处理脚本并绑定到 Canvas 节点上。
+
+```typescript
+// 场景切换
+director.loadScene(director.getScene().name);
+```
+
+## 12. emit事件触发与监听
+
+游戏的成功失败更推荐使用事件监听机制实现。
+
+```typescript
+// 触发
+director.getScene().emit('level_successful');
+
+// 监听
+director.getScene().on('level_successful', this.onEvent_LevelSuccessful, this);
+```
 

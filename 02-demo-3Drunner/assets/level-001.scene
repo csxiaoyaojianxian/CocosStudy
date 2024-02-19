@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "level",
+    "_name": "level-001",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -68,7 +68,7 @@
     "_globals": {
       "__id__": 43
     },
-    "_id": "d1b7e0be-ea5d-4e12-9336-ba4dad8a7d1e"
+    "_id": "18256570-da63-4681-8e08-68eeee37ff3e"
   },
   {
     "__type__": "cc.Node",
