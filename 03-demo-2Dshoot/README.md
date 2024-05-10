@@ -56,6 +56,8 @@ Sprite Type 选择 Tiled 瓦片平铺。
 
 创建 Canvas 节点，添加虚拟摇杆，UIJoyStick节点区域占据屏幕左半部分，便于用户操作，使用 widget 组件对尺寸位置进行适配，左侧固定距离0，垂直拉伸。
 
+对于需要全屏的节点，可以添加 widget 组件水平垂直拉伸充满屏幕。
+
 ![](./backup/04.jpg)
 
 ### 4.2 图片按钮
@@ -68,7 +70,15 @@ Sprite Type 选择 Tiled 瓦片平铺。
 
 创建 UIFail 结算面板，添加 `BlockInputEvents` 组件防止穿透到下层，添加 widget 组件水平垂直拉伸充满屏幕。
 
+### 4.4 使用布局节点制作血条
+
+添加 Layout 节点，设置排布方式，子节点自动布局。
 
 
 
+
+
+
+
+requireComponent 必须包含组件才能执行
 
